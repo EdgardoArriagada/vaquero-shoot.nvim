@@ -1,32 +1,11 @@
+local u = require("vaquero-shoot.utils")
+
 local M = {}
 
 local ENCLOSING = 1
 local QUOTES = 2
 
 local MIN_NEOVIM_COL = 1
-
-function execute(str)
-	vim.cmd(vim.api.nvim_replace_termcodes(str, true, true, true))
-end
-
-local getStartOfVisualSelection = function()
-	return vim.fn.getpos("v")[3]
-end
-
-local function safePush(pile, element, i)
-	if pile[element] then
-		table.insert(pile[element], i)
-	else
-		pile[element] = { i }
-	end
-end
-
-local function safePop(pile, element)
-	if pile[element] then
-		return table.remove(pile[element])
-	end
-	return nil
-end
 
 local enclosingLeftTokens = {
 	["("] = true,
@@ -55,11 +34,11 @@ local enclosingStruct = {
 	},
 	loadToken = function(pairsHolder, pilesStorage, token, i)
 		if enclosingLeftTokens[token] then
-			safePush(pilesStorage, token, i)
+			u.safePush(pilesStorage, token, i)
 			return
 		end
 
-		local leftIndex = safePop(pilesStorage, rightToLeftDictionary[token])
+		local leftIndex = u.safePop(pilesStorage, rightToLeftDictionary[token])
 
 		if leftIndex then
 			table.insert(pairsHolder, { leftIndex, i })
@@ -74,20 +53,20 @@ local quotesStruct = {
 		["`"] = true,
 	},
 	loadToken = function(pairsHolder, pilesStorage, token, i)
-		local leftIndex = safePop(pilesStorage, token)
+		local leftIndex = u.safePop(pilesStorage, token)
 
 		if leftIndex then
 			table.insert(pairsHolder, { leftIndex, i })
 			return
 		end
 
-		safePush(pilesStorage, token, i)
+		u.safePush(pilesStorage, token, i)
 	end,
 }
 
 local function hasVqsSelection(selectionType)
-	local currentLine = getCurrentLine()
-	local startVisualPos = getStartOfVisualSelection()
+	local currentLine = vim.api.nvim_get_current_line()
+	local startVisualPos = u.getStartOfVisualSelection()
 
 	local leftToken = currentLine:sub(startVisualPos - 1, startVisualPos - 1)
 	local isQuoteSelection = selectionType == QUOTES
@@ -103,7 +82,7 @@ local function hasVqsSelection(selectionType)
 		end
 	end
 
-	local endVisualPos = col(".")
+	local endVisualPos = vim.fn.col(".")
 
 	local rightToken = currentLine:sub(endVisualPos + 1, endVisualPos + 1)
 
@@ -124,7 +103,7 @@ local function createPairsHolder(selectionType)
 	local loadToken = currentStructure.loadToken
 
 	local i = 1
-	for token in getCurrentLine():gmatch(".") do
+	for token in vim.api.nvim_get_current_line():gmatch(".") do
 		if tokens[token] then
 			loadToken(result, pilesStorage, token, i)
 		end
@@ -140,15 +119,8 @@ local function createPairsHolder(selectionType)
 	return result
 end
 
-local function selectMoving(touple)
-	local lineNumber = line(".")
-	vim.fn.cursor(lineNumber, touple[1] + 1)
-	execute("normal<Esc>v")
-	vim.fn.cursor(lineNumber, touple[2] - 1)
-end
-
 local function beginVqsSelection(selectionType, recycledPairsHolder, givenCol)
-	local currCol = givenCol or col(".")
+	local currCol = givenCol or vim.fn.col(".")
 	local pairsHolder = recycledPairsHolder or createPairsHolder(selectionType)
 
 	local closestPair = nil
@@ -161,7 +133,7 @@ local function beginVqsSelection(selectionType, recycledPairsHolder, givenCol)
 
 	-- try to select between
 	local minLeft = -1
-	for left, right in toupleArrayElement(pairsHolder) do
+	for left, right in u.toupleArrayElement(pairsHolder) do
 		if left <= currCol and currCol <= right then
 			if minLeft < left then
 				minLeft = left
@@ -171,7 +143,7 @@ local function beginVqsSelection(selectionType, recycledPairsHolder, givenCol)
 	end
 
 	if closestPair then
-		selectMoving(closestPair)
+		u.selectMoving(closestPair)
 		unload()
 		return
 	end
@@ -179,7 +151,7 @@ local function beginVqsSelection(selectionType, recycledPairsHolder, givenCol)
 	-- try to select forward
 	closestPair = nil
 	minLeft = 1 / 0 -- inf
-	for left, right in toupleArrayElement(pairsHolder) do
+	for left, right in u.toupleArrayElement(pairsHolder) do
 		if currCol < left and currCol < right then
 			if left < minLeft then
 				minLeft = left
@@ -189,7 +161,7 @@ local function beginVqsSelection(selectionType, recycledPairsHolder, givenCol)
 	end
 
 	if closestPair then
-		selectMoving(closestPair)
+		u.selectMoving(closestPair)
 		unload()
 		return
 	end
@@ -197,7 +169,7 @@ local function beginVqsSelection(selectionType, recycledPairsHolder, givenCol)
 	-- try to select backwards
 	closestPair = nil
 	local maxRight = -1
-	for left, right in toupleArrayElement(pairsHolder) do
+	for left, right in u.toupleArrayElement(pairsHolder) do
 		if left < currCol and right < currCol then
 			if maxRight < right then
 				maxRight = right
@@ -207,14 +179,14 @@ local function beginVqsSelection(selectionType, recycledPairsHolder, givenCol)
 	end
 
 	if closestPair then
-		selectMoving(closestPair)
+		u.selectMoving(closestPair)
 	end
 
 	unload()
 end
 
 local function findLeftIndex(currRight, pairsHolder)
-	for left, right in toupleArrayElement(pairsHolder) do
+	for left, right in u.toupleArrayElement(pairsHolder) do
 		if currRight == right then
 			return left
 		end
@@ -222,16 +194,16 @@ local function findLeftIndex(currRight, pairsHolder)
 end
 
 local function cycleVqsSelection(selectionType)
-	local currRightCol = col(".") + 1
+	local currRightCol = vim.fn.col(".") + 1
 
 	local pairsHolder = createPairsHolder(selectionType)
 
-	local currLeftCol = findLeftIndex(currRightCol, pairsHolder) or getStartOfVisualSelection()
+	local currLeftCol = findLeftIndex(currRightCol, pairsHolder) or u.getStartOfVisualSelection()
 
 	-- find next occurrence
 	local nextPair = nil
 	local minLeft = 1 / 0 -- inf
-	for left, right in toupleArrayElement(pairsHolder) do
+	for left, right in u.toupleArrayElement(pairsHolder) do
 		if minLeft > left and left > currLeftCol then
 			minLeft = left
 			nextPair = { left, right }
@@ -239,7 +211,7 @@ local function cycleVqsSelection(selectionType)
 	end
 
 	if nextPair then
-		selectMoving(nextPair)
+		u.selectMoving(nextPair)
 
 		-- unload
 		pairsHolder = nil
