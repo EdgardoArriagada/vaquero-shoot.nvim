@@ -238,16 +238,16 @@ M.cycleQuotesSelection = function()
 	cycleVqsSelection(QUOTES)
 end
 
-M.hasSelection = function()
-	return hasVqsSelection(QUOTES) or hasVqsSelection(ENCLOSING)
-end
-
 M.hasEnclosingSelection = function()
 	return hasVqsSelection(ENCLOSING)
 end
 
 M.hasQuotesSelection = function()
 	return hasVqsSelection(QUOTES)
+end
+
+M.hasVqsSelection = function()
+	return hasVqsSelection(QUOTES) or hasVqsSelection(ENCLOSING)
 end
 
 -- Test string
