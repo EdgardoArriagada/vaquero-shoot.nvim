@@ -5,6 +5,10 @@ local QUOTES = 2
 
 local MIN_NEOVIM_COL = 1
 
+function execute(str)
+	vim.cmd(vim.api.nvim_replace_termcodes(str, true, true, true))
+end
+
 local getStartOfVisualSelection = function()
 	return vim.fn.getpos("v")[3]
 end
@@ -138,12 +142,12 @@ end
 
 local function selectMoving(touple)
 	local lineNumber = line(".")
-	cursor(lineNumber, touple[1] + 1)
-	Execute("normal<Esc>v")
-	cursor(lineNumber, touple[2] - 1)
+	vim.fn.cursor(lineNumber, touple[1] + 1)
+	execute("normal<Esc>v")
+	vim.fn.cursor(lineNumber, touple[2] - 1)
 end
 
-function BeginVqsSelection(selectionType, recycledPairsHolder, givenCol)
+local function beginVqsSelection(selectionType, recycledPairsHolder, givenCol)
 	local currCol = givenCol or col(".")
 	local pairsHolder = recycledPairsHolder or createPairsHolder(selectionType)
 
@@ -217,7 +221,7 @@ local function findLeftIndex(currRight, pairsHolder)
 	end
 end
 
-function CycleVqsSelection(selectionType)
+local function cycleVqsSelection(selectionType)
 	local currRightCol = col(".") + 1
 
 	local pairsHolder = createPairsHolder(selectionType)
@@ -243,23 +247,23 @@ function CycleVqsSelection(selectionType)
 		return
 	end
 
-	BeginVqsSelection(selectionType, pairsHolder, MIN_NEOVIM_COL)
+	beginVqsSelection(selectionType, pairsHolder, MIN_NEOVIM_COL)
 end
 
 M.beginEnclosingSelection = function()
-	BeginVqsSelection(ENCLOSING)
+	beginVqsSelection(ENCLOSING)
 end
 
 M.cycleEnclosingSelection = function()
-	CycleVqsSelection(ENCLOSING)
+	cycleVqsSelection(ENCLOSING)
 end
 
 M.beginQuotesSelection = function()
-	BeginVqsSelection(QUOTES)
+	beginVqsSelection(QUOTES)
 end
 
 M.cycleQuotesSelection = function()
-	CycleVqsSelection(QUOTES)
+	cycleVqsSelection(QUOTES)
 end
 
 M.hasSelection = function()
