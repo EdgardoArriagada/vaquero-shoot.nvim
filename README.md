@@ -6,6 +6,17 @@ What is vaquero-shoot?
 
 `vaquero-shoot` is a shortcut for quick inline selection of item surrounded with some character(s) like strings, arrays, objects etc.
 
+## Demo
+
+_All vaquero shoot examples uses the mappings described in the [Usage](#Usage) section_
+
+Trying to select with `vi(`
+![viparent](./images/viparent.gif)
+
+With vaquero shoot
+`shift` + `w` + `w` + `w`
+![vqsenclosing](./images/vqsenclosing.gif)
+
 ## Installation
 
 Using [lazy.nvim](https://github.com/folke/lazy.nvim)
