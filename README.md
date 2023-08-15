@@ -117,12 +117,12 @@ there are two type of selections:
 
 ## Functions
 
-| function                  | description                                |
-| ------------------------- | ------------------------------------------ |
-| `beginEnclosingSelection` | Begin enclosing selection                  |
-| `cycleEnclosingSelection` | Cycle enclosing selection                  |
-| `beginQuotesSelection`    | Begin quotes selection                     |
-| `cycleQuotesSelection`    | Cycle quotes selection                     |
-| `hasEnclosingSelection`   | Check if has enclosing selection           |
-| `hasQuotesSelection`      | Check if has quotes selection              |
-| `hasVqsSelection`         | Check if has quotes or enclosing selection |
+| function                  | description                                | return  |
+| ------------------------- | ------------------------------------------ | ------- |
+| `beginEnclosingSelection` | Begin enclosing selection                  | nil     |
+| `cycleEnclosingSelection` | Cycle enclosing selection                  | nil     |
+| `beginQuotesSelection`    | Begin quotes selection                     | nil     |
+| `cycleQuotesSelection`    | Cycle quotes selection                     | nil     |
+| `hasEnclosingSelection`   | Check if has enclosing selection           | boolean |
+| `hasQuotesSelection`      | Check if has quotes selection              | boolean |
+| `hasVqsSelection`         | Check if has quotes or enclosing selection | boolean |
