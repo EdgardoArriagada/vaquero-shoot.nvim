@@ -4,7 +4,7 @@ _The fastest selection in the west._
 
 What is vaquero-shoot?
 
-`vaquero-shoot` is a shortcut for quick inline selection of item surrounded with some character(s) like strings, arrays, objects etc.
+`vaquero-shoot` is a plugin that exposes some functions that helps you build mappings for quick inline selection of item surrounded with some character(s) like strings, arrays, objects etc.
 
 You can quickly choose from any of these characters <br />
 ![complete-enclosing](./images/complete-enclosing.gif)
@@ -14,7 +14,7 @@ You can quickly choose from any of these quotes <br />
 
 ## Demo
 
-_All *vaquero-shoot* examples uses the mappings described in the [Usage](#usage) section_
+_All `vaquero-shoot` examples uses the mappings described in the [Usage](#usage) section_
 
 (normal nvim) Trying to select in parentheses from column 1 😲 <br />
 `vi(`
