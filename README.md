@@ -4,7 +4,7 @@ _The fastest selection in the west._
 
 What is vaquero-shoot?
 
-`vaquero-shoot` is a plugin that exposes some functions that helps you build mappings for quick inline selection of item surrounded with some character(s) like strings, arrays, objects etc.
+`vaquero-shoot` is a plugin that exposes some functions that helps you build mappings for quick inline selection of text surrounded with some character(s) like strings, arrays, objects etc.
 
 You can quickly choose from any of these characters <br />
 ![complete-enclosing](./images/complete-enclosing.gif)
@@ -28,15 +28,15 @@ _All `vaquero-shoot` examples uses the mappings described in the [Usage](#usage)
 `v'` + `'` + `'` + `'` + `'` + `'`
 ![cycle-strings](./images/cycle-strings.gif)
 
-(normal nvim) Tring to select an invalid string 😔 <br />
+(normal nvim) Trying to select an invalid string 😔 <br />
 `vi"`
 ![invalid-string](./images/invalid-string.gif)
 
-(vaquero-shoot) Tring to select an invalid string 😌 <br />
+(vaquero-shoot) Trying to select an invalid string 😌 <br />
 `v'`
 ![fix-invalid-string](./images/fix-invalid-string.gif)
 
-(normal nvim)Trying to select backwards _(did nothing)_ 🫥 <br />
+(normal nvim) Trying to select backwards _(did nothing)_ 🫥 <br />
 `` vi` ``
 ![invalid-select-backwards](./images/invalid-selection-backwards.gif)
 
