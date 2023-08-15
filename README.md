@@ -16,8 +16,6 @@ You can quickly choose from any of these quotes <br />
 
 _All vaquero shoot-examples uses the mappings described in the [Usage](#Usage) section_
 
-### Applications
-
 (normal nvim) Trying to select in parentheses from column 1 😲 <br />
 `vi(`
 ![viparent](./images/viparent.gif)
