@@ -36,7 +36,7 @@ _All vaquero shoot-examples uses the mappings described in the [Usage](#usage) s
 `v'`
 ![fix-invalid-string](./images/fix-invalid-string.gif)
 
-(normal nvim)Trying to select backwards with _(did nothing)_ 🫥 <br />
+(normal nvim)Trying to select backwards _(did nothing)_ 🫥 <br />
 `` vi` ``
 ![invalid-select-backwards](./images/invalid-selection-backwards.gif)
 
