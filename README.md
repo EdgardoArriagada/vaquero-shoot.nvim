@@ -10,31 +10,32 @@ What is vaquero-shoot?
 
 _All vaquero shoot examples uses the mappings described in the [Usage](#Usage) section_
 
-Trying to select with `vi(`
+Trying to select with 😲 <br />
+`vi(`
 ![viparent](./images/viparent.gif)
 
-With vaquero-shoot
+With vaquero-shoot 🤯 <br />
 `shift` + `w` + `w` + `w`
 ![vqsenclosing](./images/vqsenclosing.gif)
 
-Same with strings, and you can cycle them forever
+Same with strings, and you can cycle them forever 😍 <br />
 `v'` + `'` + `'` + `'` + `'` + `'`
 ![cycle-strings](./images/cycle-strings.gif)
 
-Tring to select an invalid string with `vi"`
-
+Tring to select an invalid string with 😔 <br />
+`vi"`
 ![invalid-string](./images/invalid-string.gif)
 
-Tring to select an invalid string with vaquero-shoot `v'`
-
+Tring to select an invalid string with vaquero-shoot 😌 <br />
+`v'`
 ![fix-invalid-string](./images/fix-invalid-string.gif)
 
-Trying to select backwards with `` vi` ``
-
+Trying to select backwards with _(did nothing)_ 🫥 <br />
+`` vi` ``
 ![invalid-select-backwards](./images/invalid-selection-backwards.gif)
 
-Trying to select backwards with vaquero-shoot `vi'`
-
+Trying to select backwards with vaquero-shoot 😏 <br />
+`vi'`
 ![fix-invalid-selection-backwards](./images/fix-invalid-selection-backwards.gif)
 
 ## Installation
