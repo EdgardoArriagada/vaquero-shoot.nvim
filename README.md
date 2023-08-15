@@ -20,11 +20,11 @@ _All vaquero shoot-examples uses the mappings described in the [Usage](#usage) s
 `vi(`
 ![viparent](./images/viparent.gif)
 
-(vaquero-shoo) Trying to select in parentheses from column 1 _(and the following surrounded items)_ 🤯 <br />
+(vaquero-shoot) Trying to select in parentheses from column 1 _(and the following surrounded items)_ 🤯 <br />
 `shift` + `w` + `w` + `w`
 ![vqsenclosing](./images/vqsenclosing.gif)
 
-(vaquero-shoo) Same with strings, and you can cycle them forever 😍 <br />
+(vaquero-shoot) Same with strings, and you can cycle them forever 😍 <br />
 `v'` + `'` + `'` + `'` + `'` + `'`
 ![cycle-strings](./images/cycle-strings.gif)
 
