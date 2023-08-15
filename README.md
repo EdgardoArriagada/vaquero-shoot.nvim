@@ -14,7 +14,7 @@ You can quickly choose from any of these quotes <br />
 
 ## Demo
 
-_All vaquero shoot-examples uses the mappings described in the [Usage](#Usage) section_
+_All vaquero shoot-examples uses the mappings described in the [Usage](#usage) section_
 
 (normal nvim) Trying to select in parentheses from column 1 😲 <br />
 `vi(`
