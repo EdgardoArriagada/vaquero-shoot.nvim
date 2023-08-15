@@ -6,6 +6,46 @@ What is vaquero-shoot?
 
 `vaquero-shoot` is a shortcut for quick inline selection of item surrounded with some character(s) like strings, arrays, objects etc.
 
+You can quickly choose from any of these characters <br />
+![complete-enclosing](./images/complete-enclosing.gif)
+
+You can quickly choose from any of these quotes <br />
+![complete-quotes](./images/complete-quotes.gif)
+
+## Demo
+
+_All vaquero shoot-examples uses the mappings described in the [Usage](#Usage) section_
+
+### Applications
+
+(normal nvim) Trying to select in parentheses from column 1 😲 <br />
+`vi(`
+![viparent](./images/viparent.gif)
+
+(vaquero-shoo) Trying to select in parentheses from column 1 _(and the following surrounded items)_ 🤯 <br />
+`shift` + `w` + `w` + `w`
+![vqsenclosing](./images/vqsenclosing.gif)
+
+(vaquero-shoo) Same with strings, and you can cycle them forever 😍 <br />
+`v'` + `'` + `'` + `'` + `'` + `'`
+![cycle-strings](./images/cycle-strings.gif)
+
+(normal nvim) Tring to select an invalid string 😔 <br />
+`vi"`
+![invalid-string](./images/invalid-string.gif)
+
+(vaquero-shoot) Tring to select an invalid string 😌 <br />
+`v'`
+![fix-invalid-string](./images/fix-invalid-string.gif)
+
+(normal nvim)Trying to select backwards with _(did nothing)_ 🫥 <br />
+`` vi` ``
+![invalid-select-backwards](./images/invalid-selection-backwards.gif)
+
+(vaquero-shoot) Trying to select backwards 😏 <br />
+`vi'`
+![fix-invalid-selection-backwards](./images/fix-invalid-selection-backwards.gif)
+
 ## Installation
 
 Using [lazy.nvim](https://github.com/folke/lazy.nvim)
