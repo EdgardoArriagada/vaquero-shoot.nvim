@@ -13,9 +13,29 @@ _All vaquero shoot examples uses the mappings described in the [Usage](#Usage) s
 Trying to select with `vi(`
 ![viparent](./images/viparent.gif)
 
-With vaquero shoot
+With vaquero-shoot
 `shift` + `w` + `w` + `w`
 ![vqsenclosing](./images/vqsenclosing.gif)
+
+Same with strings, and you can cycle them forever
+`v'` + `'` + `'` + `'` + `'` + `'`
+![cycle-strings](./images/cycle-strings.gif)
+
+Tring to select an invalid string with `vi"`
+
+![invalid-string](./images/invalid-string.gif)
+
+Tring to select an invalid string with vaquero-shoot `v'`
+
+![fix-invalid-string](./images/fix-invalid-string.gif)
+
+Trying to select backwards with `` vi` ``
+
+![invalid-select-backwards](./images/invalid-selection-backwards.gif)
+
+Trying to select backwards with vaquero-shoot `vi'`
+
+![fix-invalid-selection-backwards](./images/fix-invalid-selection-backwards.gif)
 
 ## Installation
 
