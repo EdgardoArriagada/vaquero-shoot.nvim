@@ -43,7 +43,7 @@ _All `vaquero-shoot` examples uses the mappings described in the [Usage](#usage)
 ![invalid-select-backwards](./images/invalid-selection-backwards.gif)
 
 (vaquero-shoot) Trying to select backwards 😏 <br />
-`vi'`
+`v'`
 ![fix-invalid-selection-backwards](./images/fix-invalid-selection-backwards.gif)
 
 ## Installation
