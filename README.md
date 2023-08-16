@@ -6,10 +6,10 @@ What is vaquero-shoot?
 
 `vaquero-shoot` is a plugin that exposes some functions that helps you build mappings for quick inline selection of text surrounded with some character(s) like strings, arrays, objects etc.
 
-You can quickly choose from any of these characters <br />
+You can quickly select text surrounded with any of these characters <br />
 ![complete-enclosing](./images/complete-enclosing.gif)
 
-You can quickly choose from any of these quotes <br />
+You can quickly select text surrounded with any of these quotes <br />
 ![complete-quotes](./images/complete-quotes.gif)
 
 ## Demo
