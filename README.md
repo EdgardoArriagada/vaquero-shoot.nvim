@@ -12,6 +12,8 @@ You can quickly select text surrounded with any of these characters <br />
 You can quickly select text surrounded with any of these quotes <br />
 ![complete-quotes](./images/complete-quotes.gif)
 
+You can cycle selections until you hit the text you wanted to select!
+
 ## Demo
 
 _All `vaquero-shoot` examples uses the mappings described in the [Usage](#usage) section_
@@ -20,11 +22,11 @@ _All `vaquero-shoot` examples uses the mappings described in the [Usage](#usage)
 `vi(`
 ![viparent](./images/viparent.gif)
 
-(vaquero-shoot) Trying to select in parentheses from column 1 _(and the following surrounded items)_ 🤯 <br />
-`shift` + `w` + `w` + `w`
+(vaquero-shoot) Trying to select in parentheses from column 1 _(and cycling selection)_ 🤯 <br />
+`shift` + `w` + `w` + `w` + `w` + `w` + `w` + `w` + `w` + `w`
 ![vqsenclosing](./images/vqsenclosing.gif)
 
-(vaquero-shoot) Same with strings, and you can cycle them forever 😍 <br />
+(vaquero-shoot) Same with strings 😍 <br />
 `v'` + `'` + `'` + `'` + `'` + `'`
 ![cycle-strings](./images/cycle-strings.gif)
 
