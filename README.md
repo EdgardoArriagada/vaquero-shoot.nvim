@@ -98,6 +98,8 @@ vim.keymap.set({ "o", "v" }, "'", function()
     else
         vqs.beginQuotesSelection()
     end
+
+    -- or siply vqs.quotesSelection()
 end)
 ```
 
@@ -131,15 +133,17 @@ there are two type of selections:
 
 ## Functions
 
-| function                | description                                | return  |
-| ----------------------- | ------------------------------------------ | ------- |
-| beginEnclosingSelection | Begin enclosing selection                  | nil     |
-| cycleEnclosingSelection | Cycle enclosing selection                  | nil     |
-| beginQuotesSelection    | Begin quotes selection                     | nil     |
-| cycleQuotesSelection    | Cycle quotes selection                     | nil     |
-| hasEnclosingSelection   | Check if has enclosing selection           | boolean |
-| hasQuotesSelection      | Check if has quotes selection              | boolean |
-| hasVqsSelection         | Check if has quotes or enclosing selection | boolean |
+| function                | description                                                                        | return  |
+| ----------------------- | ---------------------------------------------------------------------------------- | ------- |
+| beginEnclosingSelection | Begin enclosing selection                                                          | nil     |
+| cycleEnclosingSelection | Cycle enclosing selection                                                          | nil     |
+| enclosingSelection      | Perform Begin or Cycle enclosing selection depending if it has enclosing selection | nil     |
+| beginQuotesSelection    | Begin quotes selection                                                             | nil     |
+| cycleQuotesSelection    | Cycle quotes selection                                                             | nil     |
+| quotesSelection         | Perform Begin or Cycle quotes selection depending if it has enclosing selection    | nil     |
+| hasEnclosingSelection   | Check if has enclosing selection                                                   | boolean |
+| hasQuotesSelection      | Check if has quotes selection                                                      | boolean |
+| hasVqsSelection         | Check if has quotes or enclosing selection                                         | boolean |
 
 ## Commands
 
