@@ -101,16 +101,16 @@ vim.keymap.set({ "o", "v" }, "'", function()
 end)
 ```
 
-Using VimL: (Experimental)
+Using VimL:
 
 ```vim
 
 " Enclosing
-nnoremap W <cmd>VaqueroShoot beginEnclosingSelection<cr><left>
-vnoremap W <cmd>VaqueroShoot cycleEnclosingSelection<cr><left>
+nnoremap W <cmd>VaqueroShoot beginEnclosingSelection<cr>
+vnoremap W <cmd>VaqueroShoot cycleEnclosingSelection<cr>
 
 " Quotes
-vnoremap ' <cmd>VaqueroShoot cycleQuotesSelection<cr><left>
+vnoremap ' <cmd>VaqueroShoot cycleQuotesSelection<cr>
 ```
 
 ## Selections
@@ -141,7 +141,7 @@ there are two type of selections:
 | hasQuotesSelection      | Check if has quotes selection              | boolean |
 | hasVqsSelection         | Check if has quotes or enclosing selection | boolean |
 
-## CommandAction (Experimental)
+## CommandAction
 
 `VaqueroShoot` has the following actions
 
