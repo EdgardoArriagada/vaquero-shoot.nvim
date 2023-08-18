@@ -141,9 +141,11 @@ there are two type of selections:
 | hasQuotesSelection      | Check if has quotes selection              | boolean |
 | hasVqsSelection         | Check if has quotes or enclosing selection | boolean |
 
-## CommandAction
+## Commands
 
-`VaqueroShoot` has the following actions
+there is only one command, `VaqueroShoot`
+
+that command recives only one arg (action) which is describes in the table below
 
 | action                  | description                                                                        |
 | ----------------------- | ---------------------------------------------------------------------------------- |
