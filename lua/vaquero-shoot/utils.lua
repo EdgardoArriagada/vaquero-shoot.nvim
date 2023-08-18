@@ -11,7 +11,7 @@ M.toupleArrayElement = function(t)
 	end
 end
 
-local function execute (str)
+local function execute(str)
 	vim.cmd(vim.api.nvim_replace_termcodes(str, true, true, true))
 end
 
@@ -35,7 +35,7 @@ M.safePop = function(pile, element)
 end
 
 M.selectMoving = function(touple)
-	local lineNumber = line(".")
+	local lineNumber = vim.fn.line(".")
 	vim.fn.cursor(lineNumber, touple[1] + 1)
 	execute("normal<Esc>v")
 	vim.fn.cursor(lineNumber, touple[2] - 1)
