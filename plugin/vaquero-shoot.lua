@@ -29,21 +29,13 @@ vim.api.nvim_create_user_command("VaqueroShoot", function(opts)
 	elseif action == "cycleEnclosingSelection" then
 		vqs.cycleEnclosingSelection()
 	elseif action == "enclosingSelection" then
-		if vqs.hasEnclosingSelection() then
-			vqs.cycleEnclosingSelection()
-		else
-			vqs.beginEnclosingSelection()
-		end
+		vqs.enclosingSelection()
 	elseif action == "beginQuotesSelection" then
 		vqs.beginQuotesSelection()
 	elseif action == "cycleQuotesSelection" then
 		vqs.cycleQuotesSelection()
 	elseif action == "quotesSelection" then
-		if vqs.hasQuotesSelection() then
-			vqs.cycleQuotesSelection()
-		else
-			vqs.beginQuotesSelection()
-		end
+		vqs.quotesSelection()
 	else
 		print("VaqueroShoot: unknown action: " .. action)
 		return
