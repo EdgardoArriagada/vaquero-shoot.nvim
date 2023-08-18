@@ -230,12 +230,28 @@ M.cycleEnclosingSelection = function()
 	cycleVqsSelection(ENCLOSING)
 end
 
+M.enclosingSelection = function()
+	if hasVqsSelection(ENCLOSING) then
+		cycleVqsSelection(ENCLOSING)
+	else
+		beginVqsSelection(ENCLOSING)
+	end
+end
+
 M.beginQuotesSelection = function()
 	beginVqsSelection(QUOTES)
 end
 
 M.cycleQuotesSelection = function()
 	cycleVqsSelection(QUOTES)
+end
+
+M.quotesSelection = function()
+	if hasVqsSelection(QUOTES) then
+		cycleVqsSelection(QUOTES)
+	else
+		beginVqsSelection(QUOTES)
+	end
 end
 
 M.hasEnclosingSelection = function()
