@@ -101,7 +101,7 @@ vim.keymap.set({ "o", "v" }, "'", function()
 end)
 ```
 
-Using VimL:
+Using VimL: (Experimental)
 
 ```vim
 
@@ -141,7 +141,7 @@ there are two type of selections:
 | hasQuotesSelection      | Check if has quotes selection              | boolean |
 | hasVqsSelection         | Check if has quotes or enclosing selection | boolean |
 
-## CommandAction
+## CommandAction (Experimental)
 
 `VaqueroShoot` has the following actions
 
