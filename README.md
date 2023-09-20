@@ -93,7 +93,7 @@ end)
 
 -- quotes
 vim.keymap.set({ "o", "v" }, "'", function()
-    siply vqs.quotesSelection()
+    vqs.quotesSelection()
 end)
 ```
 
@@ -127,14 +127,14 @@ there are two type of selections:
 
 ## Functions
 
-| function                | description                                                                        | return |
-| ----------------------- | ---------------------------------------------------------------------------------- | ------ |
-| enclosingSelection      | Perform Begin or Cycle enclosing selection depending if it has enclosing selection | nil    |
-| quotesSelection         | Perform Begin or Cycle quotes selection depending if it has quotes selection       | nil    |
-| beginEnclosingSelection | Begin enclosing selection                                                          | nil    |
-| beginQuotesSelection    | Begin quotes selection                                                             | nil    |
-| cycleEnclosingSelection | Cycle enclosing selection                                                          | nil    |
-| cycleQuotesSelection    | Cycle quotes selection                                                             | nil    |
+| function                | description                                                                        |
+| ----------------------- | ---------------------------------------------------------------------------------- |
+| enclosingSelection      | Perform Begin or Cycle enclosing selection depending if it has enclosing selection |
+| quotesSelection         | Perform Begin or Cycle quotes selection depending if it has quotes selection       |
+| beginEnclosingSelection | Begin enclosing selection                                                          |
+| beginQuotesSelection    | Begin quotes selection                                                             |
+| cycleEnclosingSelection | Cycle enclosing selection                                                          |
+| cycleQuotesSelection    | Cycle quotes selection                                                             |
 
 ## Commands
 
