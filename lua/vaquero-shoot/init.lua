@@ -254,18 +254,6 @@ M.quotesSelection = function()
 	end
 end
 
-M.hasEnclosingSelection = function()
-	return hasVqsSelection(ENCLOSING)
-end
-
-M.hasQuotesSelection = function()
-	return hasVqsSelection(QUOTES)
-end
-
-M.hasVqsSelection = function()
-	return hasVqsSelection(QUOTES) or hasVqsSelection(ENCLOSING)
-end
-
 -- Test string
 -- () => ({foo} ({bar}))
 -- ${zsb:='zsb'} # "$foo" ` 'ba' 'bi' " ` " '''

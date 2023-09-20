@@ -93,13 +93,7 @@ end)
 
 -- quotes
 vim.keymap.set({ "o", "v" }, "'", function()
-    if vqs.hasQuotesSelection() then
-        vqs.cycleQuotesSelection()
-    else
-        vqs.beginQuotesSelection()
-    end
-
-    -- or siply vqs.quotesSelection()
+    siply vqs.quotesSelection()
 end)
 ```
 
@@ -133,17 +127,14 @@ there are two type of selections:
 
 ## Functions
 
-| function                | description                                                                        | return  |
-| ----------------------- | ---------------------------------------------------------------------------------- | ------- |
-| beginEnclosingSelection | Begin enclosing selection                                                          | nil     |
-| cycleEnclosingSelection | Cycle enclosing selection                                                          | nil     |
-| enclosingSelection      | Perform Begin or Cycle enclosing selection depending if it has enclosing selection | nil     |
-| beginQuotesSelection    | Begin quotes selection                                                             | nil     |
-| cycleQuotesSelection    | Cycle quotes selection                                                             | nil     |
-| quotesSelection         | Perform Begin or Cycle quotes selection depending if it has enclosing selection    | nil     |
-| hasEnclosingSelection   | Check if has enclosing selection                                                   | boolean |
-| hasQuotesSelection      | Check if has quotes selection                                                      | boolean |
-| hasVqsSelection         | Check if has quotes or enclosing selection                                         | boolean |
+| function                | description                                                                        | return |
+| ----------------------- | ---------------------------------------------------------------------------------- | ------ |
+| enclosingSelection      | Perform Begin or Cycle enclosing selection depending if it has enclosing selection | nil    |
+| quotesSelection         | Perform Begin or Cycle quotes selection depending if it has quotes selection       | nil    |
+| beginEnclosingSelection | Begin enclosing selection                                                          | nil    |
+| beginQuotesSelection    | Begin quotes selection                                                             | nil    |
+| cycleEnclosingSelection | Cycle enclosing selection                                                          | nil    |
+| cycleQuotesSelection    | Cycle quotes selection                                                             | nil    |
 
 ## Commands
 
@@ -153,9 +144,9 @@ that command recives only one arg (action) which is describes in the table below
 
 | action                  | description                                                                        |
 | ----------------------- | ---------------------------------------------------------------------------------- |
-| beginEnclosingSelection | Begin enclosing selection                                                          |
-| cycleEnclosingSelection | Cycle enclosing selection                                                          |
 | enclosingSelection      | Perform Begin or Cycle enclosing selection depending if it has enclosing selection |
+| quotesSelection         | Perform Begin or Cycle quotes selection depending if it has quotes selection       |
+| beginEnclosingSelection | Begin enclosing selection                                                          |
 | beginQuotesSelection    | Begin quotes selection                                                             |
+| cycleEnclosingSelection | Cycle enclosing selection                                                          |
 | cycleQuotesSelection    | Cycle quotes selection                                                             |
-| quotesSelection         | Perform Begin or Cycle quotes selection depending if it has enclosing selection    |
