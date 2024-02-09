@@ -82,7 +82,7 @@ local function hasVqsSelection(selectionType)
 		end
 	end
 
-	local endVisualPos = vim.fn.col(".")
+	local endVisualPos = u.getCol()
 
 	local rightToken = currentLine:sub(endVisualPos + 1, endVisualPos + 1)
 
@@ -120,7 +120,7 @@ local function createPairsHolder(selectionType)
 end
 
 local function beginVqsSelection(selectionType, recycledPairsHolder, givenCol)
-	local currCol = givenCol or vim.fn.col(".")
+	local currCol = givenCol or u.getCol()
 	local pairsHolder = recycledPairsHolder or createPairsHolder(selectionType)
 
 	local closestPair = nil
@@ -194,7 +194,7 @@ local function findLeftIndex(currRight, pairsHolder)
 end
 
 local function cycleVqsSelection(selectionType)
-	local currRightCol = vim.fn.col(".") + 1
+	local currRightCol = u.getCol() + 1
 
 	local pairsHolder = createPairsHolder(selectionType)
 

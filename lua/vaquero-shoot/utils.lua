@@ -11,6 +11,10 @@ M.toupleArrayElement = function(t)
 	end
 end
 
+M.getCol = function()
+	return vim.api.nvim_win_get_cursor(0)[2] + 1
+end
+
 local function execute(str)
 	vim.cmd(vim.api.nvim_replace_termcodes(str, true, true, true))
 end
