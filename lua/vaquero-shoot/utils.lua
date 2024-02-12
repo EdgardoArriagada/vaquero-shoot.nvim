@@ -44,9 +44,9 @@ end
 
 M.selectMoving = function(touple)
   local lineNumber = getLineNum()
-  vim.fn.cursor(lineNumber, touple[1] + 1)
+  vim.api.nvim_win_set_cursor(0, { lineNumber, touple[1] })
   execute("normal<Esc>v")
-  vim.fn.cursor(lineNumber, touple[2] - 1)
+  vim.api.nvim_win_set_cursor(0, { lineNumber, touple[2] - 2 })
 end
 
 return M
