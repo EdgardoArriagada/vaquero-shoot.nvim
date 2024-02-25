@@ -125,28 +125,23 @@ there are two type of selections:
 ' ` "
 ```
 
-## Functions
+## Actions
 
-| function                | description                                                                        |
-| ----------------------- | ---------------------------------------------------------------------------------- |
-| enclosingSelection      | Perform Begin or Cycle enclosing selection depending if it has enclosing selection |
-| quotesSelection         | Perform Begin or Cycle quotes selection depending if it has quotes selection       |
-| beginEnclosingSelection | Begin enclosing selection                                                          |
-| beginQuotesSelection    | Begin quotes selection                                                             |
-| cycleEnclosingSelection | Cycle enclosing selection                                                          |
-| cycleQuotesSelection    | Cycle quotes selection                                                             |
+| action                         | description                                                                        |
+| ------------------------------ | ---------------------------------------------------------------------------------- |
+| enclosingSelection             | Perform Begin or Cycle enclosing selection depending if it has enclosing selection |
+| reverseEnclosingSelection      | Perform enclosingSelection backwards                                               |
+| quotesSelection                | Perform Begin or Cycle quotes selection depending if it has quotes selection       |
+| reverseQuotesSelection         | Perform quotesSelection backwards                                                  |
+| beginEnclosingSelection        | Begin enclosing selection                                                          |
+| beginReverseEnclosingSelection | Perform beginEnclosingSelection backwards                                          |
+| beginQuotesSelection           | Begin quotes selection                                                             |
+| beginReverseQuotesSelection    | Perform beginQuotesSelection backwards                                             |
+| cycleEnclosingSelection        | Cycle enclosing selection                                                          |
+| cycleReverseEnclosingSelection | Perform cycleEnclosingSelection backwards                                          |
+| cycleQuotesSelection           | Cycle quotes selection                                                             |
+| cycleReverseQuotesSelection    | Perform cycleQuotesSelection backwards                                             |
 
 ## Commands
 
-there is only one command, `VaqueroShoot`
-
-that command recives only one arg (action) which is describes in the table below
-
-| action                  | description                                                                        |
-| ----------------------- | ---------------------------------------------------------------------------------- |
-| enclosingSelection      | Perform Begin or Cycle enclosing selection depending if it has enclosing selection |
-| quotesSelection         | Perform Begin or Cycle quotes selection depending if it has quotes selection       |
-| beginEnclosingSelection | Begin enclosing selection                                                          |
-| beginQuotesSelection    | Begin quotes selection                                                             |
-| cycleEnclosingSelection | Cycle enclosing selection                                                          |
-| cycleQuotesSelection    | Cycle quotes selection                                                             |
+There is only one command, `VaqueroShoot` which receives only one arg (action) which is describes in the table above
