@@ -314,8 +314,7 @@ local function cycleReverseVqsSelection(selectionType)
     return
   end
 
-
-  beginReverseVqsSelection(selectionType, pairsHolder, MIN_NEOVIM_COL)
+  beginReverseVqsSelection(selectionType, pairsHolder, M.getMaxCol())
 end
 
 M.beginEnclosingSelection = function()
