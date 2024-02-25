@@ -200,7 +200,7 @@ local function beginReverseVqsSelection(selectionType, recycledPairsHolder, give
   -- try to select between
   local minLeft = -1
   for left, right in u.toupleArrayElement(pairsHolder) do
-    if left <= currCol and currCol <= right then
+    if left < currCol and currCol < right then
       if minLeft < left then
         minLeft = left
         closestPair = { left, right }
