@@ -341,6 +341,14 @@ M.cycleReverseEnclosingSelection = function()
   cycleReverseVqsSelection(ENCLOSING)
 end
 
+M.reverseEnclosingSelection = function()
+  if hasVqsSelection(ENCLOSING) then
+    cycleReverseVqsSelection(ENCLOSING)
+  else
+    beginReverseVqsSelection(ENCLOSING)
+  end
+end
+
 M.beginQuotesSelection = function()
   beginVqsSelection(QUOTES)
 end
@@ -354,6 +362,22 @@ M.quotesSelection = function()
     cycleVqsSelection(QUOTES)
   else
     beginVqsSelection(QUOTES)
+  end
+end
+
+M.beginReverseQuotesSelection = function()
+  beginReverseVqsSelection(QUOTES)
+end
+
+M.cycleReverseQuotesSelection = function()
+  cycleReverseVqsSelection(QUOTES)
+end
+
+M.reverseQuotesSelection = function()
+  if hasVqsSelection(QUOTES) then
+    cycleReverseVqsSelection(QUOTES)
+  else
+    beginReverseVqsSelection(QUOTES)
   end
 end
 
