@@ -83,17 +83,29 @@ Using Lua:
 local vqs = require("vaquero-shoot")
 
 -- enclosing
+vim.keymap.set("n", "E", function()
+  vqs.beginEnclosingSelection()
+end)
+
+vim.keymap.set("v", "E", function()
+  vqs.cycleEnclosingSelection()
+end)
+
 vim.keymap.set("n", "W", function()
-    vqs.beginEnclosingSelection()
+  vqs.beginReverseEnclosingSelection()
 end)
 
 vim.keymap.set("v", "W", function()
-    vqs.cycleEnclosingSelection()
+  vqs.cycleReverseEnclosingSelection()
 end)
 
 -- quotes
 vim.keymap.set({ "o", "v" }, "'", function()
-    vqs.quotesSelection()
+  vqs.quotesSelection()
+end)
+
+vim.keymap.set({ "o", "v" }, '"', function()
+  vqs.reverseQuotesSelection()
 end)
 ```
 
@@ -102,11 +114,14 @@ Using VimL:
 ```vim
 
 " Enclosing
-nnoremap W <cmd>VaqueroShoot beginEnclosingSelection<cr>
-vnoremap W <cmd>VaqueroShoot cycleEnclosingSelection<cr>
+nnoremap E <cmd>VaqueroShoot beginEnclosingSelection<cr>
+vnoremap E <cmd>VaqueroShoot cycleEnclosingSelection<cr>
+nnoremap W <cmd>VaqueroShoot beginReverseEnclosingSelection<cr>
+vnoremap W <cmd>VaqueroShoot cycleReverseEnclosingSelection<cr>
 
 " Quotes
-vnoremap ' <cmd>VaqueroShoot cycleQuotesSelection<cr>
+vnoremap ' <cmd>VaqueroShoot quotesSelection<cr>
+vnoremap " <cmd>VaqueroShoot reverseQuotesSelection<cr>
 ```
 
 ## Selections
