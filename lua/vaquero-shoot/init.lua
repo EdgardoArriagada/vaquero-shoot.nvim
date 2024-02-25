@@ -185,6 +185,72 @@ local function beginVqsSelection(selectionType, recycledPairsHolder, givenCol)
   unload()
 end
 
+local function beginReverseVqsSelection(selectionType, recycledPairsHolder, givenCol)
+  local currCol = givenCol or u.getCol()
+  local pairsHolder = recycledPairsHolder or createPairsHolder(selectionType)
+
+  local closestPair = nil
+
+  local function unload()
+    pairsHolder = nil
+    recycledPairsHolder = nil
+    closestPair = nil
+  end
+
+  -- try to select between
+  local minLeft = -1
+  for left, right in u.toupleArrayElement(pairsHolder) do
+    if left <= currCol and currCol <= right then
+      if minLeft < left then
+        minLeft = left
+        closestPair = { left, right }
+      end
+    end
+  end
+
+  if closestPair then
+    u.selectMoving(closestPair)
+    unload()
+    return
+  end
+
+  -- try to select backwards
+  closestPair = nil
+  local maxRight = -1
+  for left, right in u.toupleArrayElement(pairsHolder) do
+    if left < currCol and right < currCol then
+      if maxRight < right then
+        maxRight = right
+        closestPair = { left, right }
+      end
+    end
+  end
+
+  if closestPair then
+    u.selectMoving(closestPair)
+    unload()
+    return
+  end
+
+  -- try to select forward
+  closestPair = nil
+  minLeft = 1 / 0 -- inf
+  for left, right in u.toupleArrayElement(pairsHolder) do
+    if currCol < left and currCol < right then
+      if left < minLeft then
+        minLeft = left
+        closestPair = { left, right }
+      end
+    end
+  end
+
+  if closestPair then
+    u.selectMoving(closestPair)
+  end
+
+  unload()
+end
+
 local function findLeftIndex(currRight, pairsHolder)
   for left, right in u.toupleArrayElement(pairsHolder) do
     if currRight == right then
@@ -222,6 +288,36 @@ local function cycleVqsSelection(selectionType)
   beginVqsSelection(selectionType, pairsHolder, MIN_NEOVIM_COL)
 end
 
+local function cycleReverseVqsSelection(selectionType)
+  local currRightCol = u.getCol() + 1
+
+  local pairsHolder = createPairsHolder(selectionType)
+
+  local currLeftCol = findLeftIndex(currRightCol, pairsHolder) or u.getStartOfVisualSelection()
+
+  -- find previous occurrence
+  local nextPair = nil
+  local minLeft = -1
+  for left, right in u.toupleArrayElement(pairsHolder) do
+    if minLeft < left and left < currLeftCol then
+      minLeft = left
+      nextPair = { left, right }
+    end
+  end
+
+  if nextPair then
+    u.selectMoving(nextPair)
+
+    -- unload
+    pairsHolder = nil
+    nextPair = nil
+    return
+  end
+
+
+  beginReverseVqsSelection(selectionType, pairsHolder, MIN_NEOVIM_COL)
+end
+
 M.beginEnclosingSelection = function()
   beginVqsSelection(ENCLOSING)
 end
@@ -236,6 +332,14 @@ M.enclosingSelection = function()
   else
     beginVqsSelection(ENCLOSING)
   end
+end
+
+M.beginReverseEnclosingSelection = function()
+  beginReverseVqsSelection(ENCLOSING)
+end
+
+M.cycleReverseEnclosingSelection = function()
+  cycleReverseVqsSelection(ENCLOSING)
 end
 
 M.beginQuotesSelection = function()
