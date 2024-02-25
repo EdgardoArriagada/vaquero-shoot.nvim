@@ -186,7 +186,7 @@ local function beginVqsSelection(selectionType, recycledPairsHolder, givenCol)
 end
 
 local function beginReverseVqsSelection(selectionType, recycledPairsHolder, givenCol)
-	local currCol = givenCol or u.getMaxCol()
+	local currCol = givenCol or u.getMaxCol() + 1
 	local pairsHolder = recycledPairsHolder or createPairsHolder(selectionType)
 
 	local closestPair = nil
