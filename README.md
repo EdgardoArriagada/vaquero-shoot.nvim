@@ -83,17 +83,29 @@ Using Lua:
 local vqs = require("vaquero-shoot")
 
 -- enclosing
+vim.keymap.set("n", "E", function()
+  vqs.beginEnclosingSelection()
+end)
+
+vim.keymap.set("v", "E", function()
+  vqs.cycleEnclosingSelection()
+end)
+
 vim.keymap.set("n", "W", function()
-    vqs.beginEnclosingSelection()
+  vqs.beginReverseEnclosingSelection()
 end)
 
 vim.keymap.set("v", "W", function()
-    vqs.cycleEnclosingSelection()
+  vqs.cycleReverseEnclosingSelection()
 end)
 
 -- quotes
 vim.keymap.set({ "o", "v" }, "'", function()
-    vqs.quotesSelection()
+  vqs.quotesSelection()
+end)
+
+vim.keymap.set({ "o", "v" }, '"', function()
+  vqs.reverseQuotesSelection()
 end)
 ```
 
@@ -102,11 +114,14 @@ Using VimL:
 ```vim
 
 " Enclosing
-nnoremap W <cmd>VaqueroShoot beginEnclosingSelection<cr>
-vnoremap W <cmd>VaqueroShoot cycleEnclosingSelection<cr>
+nnoremap E <cmd>VaqueroShoot beginEnclosingSelection<cr>
+vnoremap E <cmd>VaqueroShoot cycleEnclosingSelection<cr>
+nnoremap W <cmd>VaqueroShoot beginReverseEnclosingSelection<cr>
+vnoremap W <cmd>VaqueroShoot cycleReverseEnclosingSelection<cr>
 
 " Quotes
-vnoremap ' <cmd>VaqueroShoot cycleQuotesSelection<cr>
+vnoremap ' <cmd>VaqueroShoot quotesSelection<cr>
+vnoremap " <cmd>VaqueroShoot reverseQuotesSelection<cr>
 ```
 
 ## Selections
@@ -125,28 +140,23 @@ there are two type of selections:
 ' ` "
 ```
 
-## Functions
+## Actions
 
-| function                | description                                                                        |
-| ----------------------- | ---------------------------------------------------------------------------------- |
-| enclosingSelection      | Perform Begin or Cycle enclosing selection depending if it has enclosing selection |
-| quotesSelection         | Perform Begin or Cycle quotes selection depending if it has quotes selection       |
-| beginEnclosingSelection | Begin enclosing selection                                                          |
-| beginQuotesSelection    | Begin quotes selection                                                             |
-| cycleEnclosingSelection | Cycle enclosing selection                                                          |
-| cycleQuotesSelection    | Cycle quotes selection                                                             |
+| action                         | description                                                                        |
+| ------------------------------ | ---------------------------------------------------------------------------------- |
+| enclosingSelection             | Perform Begin or Cycle enclosing selection depending if it has enclosing selection |
+| reverseEnclosingSelection      | Perform enclosingSelection backwards                                               |
+| quotesSelection                | Perform Begin or Cycle quotes selection depending if it has quotes selection       |
+| reverseQuotesSelection         | Perform quotesSelection backwards                                                  |
+| beginEnclosingSelection        | Begin enclosing selection                                                          |
+| beginReverseEnclosingSelection | Perform beginEnclosingSelection backwards                                          |
+| beginQuotesSelection           | Begin quotes selection                                                             |
+| beginReverseQuotesSelection    | Perform beginQuotesSelection backwards                                             |
+| cycleEnclosingSelection        | Cycle enclosing selection                                                          |
+| cycleReverseEnclosingSelection | Perform cycleEnclosingSelection backwards                                          |
+| cycleQuotesSelection           | Cycle quotes selection                                                             |
+| cycleReverseQuotesSelection    | Perform cycleQuotesSelection backwards                                             |
 
 ## Commands
 
-there is only one command, `VaqueroShoot`
-
-that command recives only one arg (action) which is describes in the table below
-
-| action                  | description                                                                        |
-| ----------------------- | ---------------------------------------------------------------------------------- |
-| enclosingSelection      | Perform Begin or Cycle enclosing selection depending if it has enclosing selection |
-| quotesSelection         | Perform Begin or Cycle quotes selection depending if it has quotes selection       |
-| beginEnclosingSelection | Begin enclosing selection                                                          |
-| beginQuotesSelection    | Begin quotes selection                                                             |
-| cycleEnclosingSelection | Cycle enclosing selection                                                          |
-| cycleQuotesSelection    | Cycle quotes selection                                                             |
+There is only one command, `VaqueroShoot` which receives only one arg (action) which is describes in the table above

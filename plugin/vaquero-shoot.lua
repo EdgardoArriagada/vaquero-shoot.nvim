@@ -2,9 +2,15 @@ local actions = {
 	"beginEnclosingSelection",
 	"cycleEnclosingSelection",
 	"enclosingSelection",
+	"beginReverseEnclosingSelection",
+	"cycleReverseEnclosingSelection",
+	"reverseEnclosingSelection",
 	"beginQuotesSelection",
 	"cycleQuotesSelection",
 	"quotesSelection",
+	"beginReverseQuotesSelection",
+	"cycleReverseQuotesSelection",
+	"reverseQuotesSelection",
 }
 
 local function complete_vaquero_shoot(arglead)
@@ -24,20 +30,12 @@ vim.api.nvim_create_user_command("VaqueroShoot", function(opts)
 
 	local vqs = require("vaquero-shoot")
 
-	if action == "beginEnclosingSelection" then
-		vqs.beginEnclosingSelection()
-	elseif action == "cycleEnclosingSelection" then
-		vqs.cycleEnclosingSelection()
-	elseif action == "enclosingSelection" then
-		vqs.enclosingSelection()
-	elseif action == "beginQuotesSelection" then
-		vqs.beginQuotesSelection()
-	elseif action == "cycleQuotesSelection" then
-		vqs.cycleQuotesSelection()
-	elseif action == "quotesSelection" then
-		vqs.quotesSelection()
-	else
+	local fn = vqs[action]
+
+	if not fn then
 		print("VaqueroShoot: unknown action: " .. action)
 		return
 	end
+
+	fn()
 end, { nargs = 1, complete = complete_vaquero_shoot })
