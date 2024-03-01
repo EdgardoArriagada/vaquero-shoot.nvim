@@ -92,11 +92,11 @@ vim.keymap.set("v", "E", function()
 end)
 
 vim.keymap.set("n", "W", function()
-  vqs.beginReverseEnclosingSelection()
+  vqs.beginEnclosingSelectionBackwards()
 end)
 
 vim.keymap.set("v", "W", function()
-  vqs.cycleReverseEnclosingSelection()
+  vqs.cycleEnclosingSelectionBackwards()
 end)
 
 -- quotes
@@ -105,7 +105,7 @@ vim.keymap.set({ "o", "v" }, "'", function()
 end)
 
 vim.keymap.set({ "o", "v" }, '"', function()
-  vqs.reverseQuotesSelection()
+  vqs.quotesSelectionBackwards()
 end)
 ```
 
@@ -116,12 +116,12 @@ Using VimL:
 " Enclosing
 nnoremap E <cmd>VaqueroShoot beginEnclosingSelection<cr>
 vnoremap E <cmd>VaqueroShoot cycleEnclosingSelection<cr>
-nnoremap W <cmd>VaqueroShoot beginReverseEnclosingSelection<cr>
-vnoremap W <cmd>VaqueroShoot cycleReverseEnclosingSelection<cr>
+nnoremap W <cmd>VaqueroShoot beginEnclosingSelectionBackwards<cr>
+vnoremap W <cmd>VaqueroShoot cycleEnclosingSelectionBackwards<cr>
 
 " Quotes
 vnoremap ' <cmd>VaqueroShoot quotesSelection<cr>
-vnoremap " <cmd>VaqueroShoot reverseQuotesSelection<cr>
+vnoremap " <cmd>VaqueroShoot quotesSelectionBackwards<cr>
 ```
 
 ## Selections
@@ -142,20 +142,20 @@ there are two type of selections:
 
 ## Actions
 
-| action                         | description                                                                        |
-| ------------------------------ | ---------------------------------------------------------------------------------- |
-| enclosingSelection             | Perform Begin or Cycle enclosing selection depending if it has enclosing selection |
-| reverseEnclosingSelection      | Perform enclosingSelection backwards                                               |
-| quotesSelection                | Perform Begin or Cycle quotes selection depending if it has quotes selection       |
-| reverseQuotesSelection         | Perform quotesSelection backwards                                                  |
-| beginEnclosingSelection        | Begin enclosing selection                                                          |
-| beginReverseEnclosingSelection | Perform beginEnclosingSelection backwards                                          |
-| beginQuotesSelection           | Begin quotes selection                                                             |
-| beginReverseQuotesSelection    | Perform beginQuotesSelection backwards                                             |
-| cycleEnclosingSelection        | Cycle enclosing selection                                                          |
-| cycleReverseEnclosingSelection | Perform cycleEnclosingSelection backwards                                          |
-| cycleQuotesSelection           | Cycle quotes selection                                                             |
-| cycleReverseQuotesSelection    | Perform cycleQuotesSelection backwards                                             |
+| action                           | description                                                                        |
+| -------------------------------- | ---------------------------------------------------------------------------------- |
+| enclosingSelection               | Perform Begin or Cycle enclosing selection depending if it has enclosing selection |
+| enclosingSelectionBackwards      | Perform enclosingSelection backwards                                               |
+| quotesSelection                  | Perform Begin or Cycle quotes selection depending if it has quotes selection       |
+| quotesSelectionBackwards         | Perform quotesSelection backwards                                                  |
+| beginEnclosingSelection          | Begin enclosing selection                                                          |
+| beginEnclosingSelectionBackwards | Perform beginEnclosingSelection backwards                                          |
+| beginQuotesSelection             | Begin quotes selection                                                             |
+| beginQuotesSelectionBackwards    | Perform beginQuotesSelection backwards                                             |
+| cycleEnclosingSelection          | Cycle enclosing selection                                                          |
+| cycleEnclosingSelectionBackwards | Perform cycleEnclosingSelection backwards                                          |
+| cycleQuotesSelection             | Cycle quotes selection                                                             |
+| cycleQuotesSelectionBackwards    | Perform cycleQuotesSelection backwards                                             |
 
 ## Commands
 

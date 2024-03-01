@@ -2,15 +2,15 @@ local actions = {
 	"beginEnclosingSelection",
 	"cycleEnclosingSelection",
 	"enclosingSelection",
-	"beginReverseEnclosingSelection",
-	"cycleReverseEnclosingSelection",
-	"reverseEnclosingSelection",
+	"beginEnclosingSelectionBackwards",
+	"cycleEnclosingSelectionBackwards",
+	"enclosingSelectionBackwards",
 	"beginQuotesSelection",
 	"cycleQuotesSelection",
 	"quotesSelection",
-	"beginReverseQuotesSelection",
-	"cycleReverseQuotesSelection",
-	"reverseQuotesSelection",
+	"beginQuotesSelectionBackwards",
+	"cycleQuotesSelectionBackwards",
+	"quotesSelectionBackwards",
 }
 
 local function complete_vaquero_shoot(arglead)
