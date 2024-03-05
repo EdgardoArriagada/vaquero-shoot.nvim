@@ -186,7 +186,7 @@ local function beginVqsSelection(selectionType, recycledPairsHolder, givenCol)
 end
 
 local function beginVqsSelectionBackwards(selectionType, recycledPairsHolder, givenCol)
-	local currCol = givenCol or u.getMaxCol() + 1
+	local currCol = givenCol or u.getCol()
 	local pairsHolder = recycledPairsHolder or createPairsHolder(selectionType)
 
 	local closestPair = nil
@@ -215,13 +215,14 @@ local function beginVqsSelectionBackwards(selectionType, recycledPairsHolder, gi
 		return
 	end
 
-	-- try to select forward
+	-- try to select backwards from the end
+	currCol = u.getMaxCol() + 1
 	closestPair = nil
-	minLeft = 1 / 0 -- inf
+	maxLeft = -1
 	for left, right in u.toupleArrayElement(pairsHolder) do
-		if currCol < left and currCol < right then
-			if left < minLeft then
-				minLeft = left
+		if left < currCol and right < currCol then
+			if maxLeft < left then
+				maxLeft = left
 				closestPair = { left, right }
 			end
 		end
