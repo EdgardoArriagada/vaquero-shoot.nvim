@@ -185,7 +185,7 @@ local function beginVqsSelection(selectionType, recycledPairsHolder, givenCol)
 	unload()
 end
 
-local function beginReverseVqsSelection(selectionType, recycledPairsHolder, givenCol)
+local function beginVqsSelectionBackwards(selectionType, recycledPairsHolder, givenCol)
 	local currCol = givenCol or u.getMaxCol() + 1
 	local pairsHolder = recycledPairsHolder or createPairsHolder(selectionType)
 
@@ -271,7 +271,7 @@ local function cycleVqsSelection(selectionType)
 	beginVqsSelection(selectionType, pairsHolder, MIN_NEOVIM_COL)
 end
 
-local function cycleReverseVqsSelection(selectionType)
+local function cycleVqsSelectionBackwards(selectionType)
 	local currRightCol = u.getCol() + 1
 
 	local pairsHolder = createPairsHolder(selectionType)
@@ -297,7 +297,7 @@ local function cycleReverseVqsSelection(selectionType)
 		return
 	end
 
-	beginReverseVqsSelection(selectionType, pairsHolder, u.getMaxCol() + 1)
+	beginVqsSelectionBackwards(selectionType, pairsHolder, u.getMaxCol() + 1)
 end
 
 M.beginEnclosingSelection = function()
@@ -317,18 +317,18 @@ M.enclosingSelection = function()
 end
 
 M.beginEnclosingSelectionBackwards = function()
-	beginReverseVqsSelection(ENCLOSING)
+	beginVqsSelectionBackwards(ENCLOSING)
 end
 
 M.cycleEnclosingSelectionBackwards = function()
-	cycleReverseVqsSelection(ENCLOSING)
+	cycleVqsSelectionBackwards(ENCLOSING)
 end
 
 M.enclosingSelectionBackwards = function()
 	if hasVqsSelection(ENCLOSING) then
-		cycleReverseVqsSelection(ENCLOSING)
+		cycleVqsSelectionBackwards(ENCLOSING)
 	else
-		beginReverseVqsSelection(ENCLOSING)
+		beginVqsSelectionBackwards(ENCLOSING)
 	end
 end
 
@@ -349,18 +349,18 @@ M.quotesSelection = function()
 end
 
 M.beginQuotesSelectionBackwards = function()
-	beginReverseVqsSelection(QUOTES)
+	beginVqsSelectionBackwards(QUOTES)
 end
 
 M.cycleQuotesSelectionBackwards = function()
-	cycleReverseVqsSelection(QUOTES)
+	cycleVqsSelectionBackwards(QUOTES)
 end
 
 M.quotesSelectionBackwards = function()
 	if hasVqsSelection(QUOTES) then
-		cycleReverseVqsSelection(QUOTES)
+		cycleVqsSelectionBackwards(QUOTES)
 	else
-		beginReverseVqsSelection(QUOTES)
+		beginVqsSelectionBackwards(QUOTES)
 	end
 end
 
