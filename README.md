@@ -79,34 +79,17 @@ use {
 Using Lua:
 
 ```lua
-
 local vqs = require("vaquero-shoot")
 
 -- enclosing
-vim.keymap.set("n", "E", function()
-  vqs.beginEnclosingSelection()
-end)
-
-vim.keymap.set("v", "E", function()
-  vqs.cycleEnclosingSelection()
-end)
-
-vim.keymap.set("n", "W", function()
-  vqs.beginEnclosingSelectionBackwards()
-end)
-
-vim.keymap.set("v", "W", function()
-  vqs.cycleEnclosingSelectionBackwards()
-end)
+vim.keymap.set("n", "E", vqs.beginEnclosingSelection)
+vim.keymap.set("v", "E", vqs.cycleEnclosingSelection)
+vim.keymap.set("n", "W", vqs.beginEnclosingSelectionBackwards)
+vim.keymap.set("v", "W", vqs.cycleEnclosingSelectionBackwards)
 
 -- quotes
-vim.keymap.set({ "o", "v" }, "'", function()
-  vqs.quotesSelection()
-end)
-
-vim.keymap.set({ "o", "v" }, '"', function()
-  vqs.quotesSelectionBackwards()
-end)
+vim.keymap.set({ "o", "v" }, "'", vqs.quotesSelection)
+vim.keymap.set({ "o", "v" }, '"', vqs.quotesSelectionBackwards)
 ```
 
 Using VimL:
